@@ -1,0 +1,22 @@
+body {
+  --voicewave-color-text: #000;
+  --voicewave-default: #ccc;
+  --voicewave-primary: #209665;
+  --voicewave-secondary: #116b8f;
+  --voicewave-background: #fff;
+  --voicewave-background-tooltip: #444;
+  --voicewave-shadow-tooltip: rgba(0, 0, 0, 0.2);
+  --voicewave-text: #fff;
+  --voicewave-background-svg: #000;
+  &.darkmode {
+    --voicewave-color-text: #fff;
+    --voicewave-default: #555;
+    --voicewave-primary: #1e8057;
+    --voicewave-secondary: #0d7eaa;
+    --voicewave-background: #222;
+    --voicewave-background-tooltip: #fff;
+    --voicewave-shadow-tooltip: rgba(0, 0, 0, 0.2);
+    --voicewave-text: #000;
+    --voicewave-background-svg: #fff;
+  }
+}

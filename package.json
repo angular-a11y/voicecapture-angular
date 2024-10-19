@@ -1,0 +1,62 @@
+{
+  "name": "voicewave-angular-spa",
+  "version": "0.0.0",
+  "author": "lucasferreiralimax (https://github.com/lucasferreiralimax)",
+  "repository": "https://github.com/angular-a11y/voicewave-angular",
+  "bugs": {
+    "url": "https://github.com/angular-a11y/voicewave-angular/issues"
+  },
+  "homepage": "https://voicewave-angular.web.app",
+  "keywords": [
+    "angular",
+    "components",
+    "modal",
+    "window",
+    "ui"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "build:module": "ng build voicewave-angular && npm run postbuild",
+    "version": "cd projects/voicewave-angular && npm version patch",
+    "publish": "cd dist/voicewave-angular && npm publish",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "test:module": "ng test voicewave-angular",
+    "postbuild": "node scripts/post-build.js"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^18.2.8",
+    "@angular/common": "^18.2.8",
+    "@angular/compiler": "^18.2.8",
+    "@angular/core": "^18.2.8",
+    "@angular/forms": "^18.2.8",
+    "@angular/platform-browser": "^18.2.8",
+    "@angular/platform-browser-dynamic": "^18.2.8",
+    "@angular/router": "^18.2.8",
+    "darkmode-angular": "^0.1.4",
+    "highlight.js": "^11.10.0",
+    "jsonminify": "^0.4.2",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.8.0",
+    "zone.js": "~0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.2.9",
+    "@angular/cli": "^18.2.9",
+    "@angular/compiler-cli": "^18.2.8",
+    "@types/jasmine": "~5.1.0",
+    "glob": "^11.0.0",
+    "jasmine-core": "^5.2.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^18.2.1",
+    "terser": "^5.36.0",
+    "typescript": "^5.5.4"
+  }
+}

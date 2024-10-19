@@ -1,0 +1,73 @@
+<div
+  #modal
+  class="up-window-container"
+  [class.active]="isOpen()"
+  role="dialog"
+  aria-labelledby="dialog-title"
+  aria-describedby="dialog-description"
+  aria-modal="true"
+  [attr.aria-hidden]="!isOpen()"
+>
+  <div
+    class="up-window"
+    [ngClass]="getClass()"
+    (click)="$event.stopPropagation()"
+  >
+    @if(!restrictMode || hiddenActions) {
+    <button
+      class="close-window"
+      aria-label="Close window"
+      (click)="closeWindow()"
+    >
+      &times;
+    </button>
+    } @if(title || subtitle) {
+    <div class="up-window-header">
+      @if(title) {
+      <h3 id="dialog-title" class="up-window-title">{{ title }}</h3>
+      } @if(subtitle) {
+      <h4 id="dialog-description" class="up-window-subtitle">
+        {{ subtitle }}
+      </h4>
+      }
+    </div>
+    }
+
+    <div class="up-window-body">
+      <ng-content></ng-content>
+    </div>
+
+    @if(!hiddenActions) {
+    <div class="up-window-footer" [ngClass]="'align-' + buttonAlignment">
+      <ng-content select="[footer]"></ng-content>
+      @if(!hasFooterContent()) {
+        <button
+          class="btn btn-cancel"
+          [ngClass]="getButtonClass(cancelType)"
+          (click)="onCancel()"
+          [attr.aria-label]="cancelText"
+        >
+          {{ cancelText }}
+        </button>
+        <button
+          class="btn btn-confirm"
+          [ngClass]="getButtonClass(confirmType)"
+          (click)="onConfirm()"
+          [attr.aria-label]="confirmText"
+        >
+          {{ confirmText }}
+        </button>
+      }
+    </div>
+    }
+  </div>
+  <div
+    class="overlay"
+    (click)="closeWindow('overlay')"
+    [class.fade]="openingAnimation"
+    [class.fade-out]="closingAnimation"
+    [class.active]="isOpen()"
+    [class.blur]="blur"
+    [class.grayscale]="grayscale"
+  ></div>
+</div>

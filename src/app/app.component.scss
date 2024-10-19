@@ -1,0 +1,15 @@
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-weight: normal;
+  min-height: calc(100vh - 40px);
+}
+
+::ng-deep .btn-mode {
+  background: var(--primary) !important;
+  margin: 2rem 1rem!important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 11;
+}

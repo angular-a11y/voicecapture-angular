@@ -1,0 +1,26 @@
+{
+  "name": "voicewave-angular",
+  "version": "0.0.0",
+  "public": true,
+  "author": "lucasferreiralimax (https://github.com/lucasferreiralimax)",
+  "repository": "https://github.com/angular-a11y/voicewave-angular",
+  "bugs": {
+    "url": "https://github.com/angular-a11y/voicewave-angular/issues"
+  },
+  "homepage": "https://voicewave-angular.web.app",
+  "keywords": [
+    "angular",
+    "components",
+    "modal",
+    "window",
+    "ui"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
