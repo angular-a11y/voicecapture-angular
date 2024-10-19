@@ -1,207 +1,129 @@
 import {
   Component,
-  Input,
   OnInit,
-  ViewEncapsulation,
-  signal,
-  WritableSignal,
+  DoCheck,
+  Input,
   Output,
   EventEmitter,
-  OnDestroy,
-  ElementRef,
-  ViewChild,
-  effect,
   ChangeDetectorRef,
 } from '@angular/core';
 
 @Component({
-  selector: 'voicewave-angular',
-  templateUrl: './voicewave-angular.component.html',
-  styleUrls: [
-    './voicewave-angular.variables.scss',
-    './voicewave-angular.animation.scss',
-    './voicewave-angular.component.scss',
-    './voicewave-angular.btn.scss',
-  ],
-  encapsulation: ViewEncapsulation.None,
+  selector: 'voicewave',
+  templateUrl: './voice.component.html',
+  styleUrls: ['./voice.component.scss'],
 })
-export class VoiceWaveAngularComponent implements OnInit, OnDestroy {
-  @Input() title?: string;
-  @Input() subtitle?: string;
-  @Input() class: string | undefined;
-  @Input() isOpen: WritableSignal<boolean> = signal(false);
-  @Input() drawer: 'bottom' | 'top' | 'left' | 'right' | '' = '';
-  @Input() animation: string = this.drawer ? this.drawer : 'fade';
-  @Input() restrictMode: boolean = false;
-  @Input() fullScreen: boolean = false;
-  @Input() blur: boolean = false;
-  @Input() grayscale: boolean = false;
-  @Input() hiddenActions: boolean = false;
-  @Input() confirmText: string = 'Confirm';
-  @Input() cancelText: string = 'Cancel';
-  @Input() confirmType: string = 'primary';
-  @Input() cancelType: string = 'default';
-  @Input() buttonAlignment: 'start' | 'end' | 'center' = 'end';
-  @Input() onConfirmClick: () => void = () => this.onConfirm();
-  @Input() onCancelClick: () => void = () => this.onCancel();
+export class VoiceWave implements OnInit, DoCheck {
+  @Input() show: boolean = false;
+  @Output() updateVoice = new EventEmitter<any>();
+  final_transcript: string = '';
+  recognizing: boolean = false;
+  ignore_onend: any;
+  recognition: any;
+  animationButton: boolean = false;
+  root = <any>window.document;
 
-  @Output() confirm = new EventEmitter<void>();
-  @Output() cancel = new EventEmitter<void>();
-
-  closingAnimation: boolean = false;
-  openingAnimation: boolean = false;
-  shakeAnimation: boolean = false;
-  focusableElements!: NodeListOf<HTMLElement>;
-  firstFocusableElement!: HTMLElement;
-  lastFocusableElement!: HTMLElement;
-
-  @ViewChild('modal') modal!: ElementRef;
-
-  constructor(private cdr: ChangeDetectorRef) {
-    effect(() => {
-      if (this.isOpen()) {
-        this.addModalToBody();
-        this.startOpeningAnimation();
-        document.body.classList.add('no-scroll');
-      } else {
-        this.startClosingAnimation();
-        this.removeModalFromBody();
-        document.body.classList.remove('no-scroll');
-      }
-    });
-  }
+  constructor(private _cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    document.addEventListener('keydown', this.handleKeydown.bind(this));
+    this.voiceSetup();
+    this.show ? this.activeVoice() : this.desactiveVoice();
   }
 
-  ngAfterViewInit(): void {
-    if (this.modal) {
-      document.body.appendChild(this.modal.nativeElement);
-
-      this.focusableElements = this.modal.nativeElement.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      if (this.focusableElements.length > 0) {
-        this.firstFocusableElement = this.focusableElements[0];
-        this.lastFocusableElement =
-          this.focusableElements[this.focusableElements.length - 1];
-      }
-    }
-    this.cdr.detectChanges();
+  ngDoCheck(): void {
+    this.show ? this.activeVoice() : this.desactiveVoice();
   }
 
-  addModalToBody() {
-    if (this.modal && this.modal.nativeElement.parentNode !== document.body) {
-      document.body.appendChild(this.modal.nativeElement);
+  disableVoice() {
+    this.updateVoice.next(false);
+  }
+
+  activeVoice() {
+    if (!this.recognizing) {
+      this.recognizing = true;
+      this.final_transcript = '';
+      this.recognition.start();
     }
   }
 
-  removeModalFromBody() {
-    if (this.modal && this.modal.nativeElement.parentNode === document.body) {
-      document.body.removeChild(this.modal.nativeElement);
+  desactiveVoice() {
+    if (this.recognizing) {
+      this.recognizing = false;
+      this.animationButton = false;
+      this.recognition.stop();
     }
   }
 
-  handleKeydown(event: KeyboardEvent) {
-    if (event.key === 'Escape' && this.isOpen() && !this.restrictMode) {
-      this.closeWindow();
-    } else if (event.key === 'Escape' && this.isOpen() && this.restrictMode) {
-      this.triggerShakeAnimation();
-    }
-
-    if (event.key === 'Tab' && this.isOpen()) {
-      this.trapFocus(event);
-    }
-  }
-
-  triggerShakeAnimation() {
-    this.shakeAnimation = true;
-    setTimeout(() => {
-      this.shakeAnimation = false;
-    }, 300);
-  }
-
-  trapFocus(event: KeyboardEvent) {
-    const isShiftPressed = event.shiftKey;
-    const activeElement = document.activeElement as HTMLElement;
-
-    if (!isShiftPressed && activeElement === this.lastFocusableElement) {
-      event.preventDefault();
-      this.firstFocusableElement.focus();
-    } else if (isShiftPressed && activeElement === this.firstFocusableElement) {
-      event.preventDefault();
-      this.lastFocusableElement.focus();
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.removeModalFromBody();
-    document.removeEventListener('keydown', this.handleKeydown.bind(this));
-  }
-
-  hasFooterContent(): boolean {
-    const footerContent = this.modal?.nativeElement.querySelector('[footer]');
-    return !!footerContent && footerContent.childNodes.length > 0;
-  }
-
-  startOpeningAnimation() {
-    this.openingAnimation = true;
-    setTimeout(() => {
-      this.openingAnimation = false;
-    }, 400);
-  }
-
-  startClosingAnimation() {
-    this.closingAnimation = true;
-    setTimeout(() => {
-      this.closingAnimation = false;
-    }, 400);
-  }
-
-  closeWindow(from?: string) {
-    if (from == 'overlay' && this.restrictMode) {
-      this.triggerShakeAnimation();
+  voiceSetup() {
+    if (!('webkitSpeechRecognition' in window)) {
+      console.log('atualize SpeechRecognition');
     } else {
-      this.closingAnimation = true;
+      this.recognition = new (<any>window).webkitSpeechRecognition();
 
-      setTimeout(() => {
-        this.isOpen.set(false);
-        this.closingAnimation = false;
-      }, 400);
+      this.recognition.continuous = false;
+      this.recognition.interimResults = true;
+
+      this.final_transcript = '';
+      this.ignore_onend = false;
+      this.root.querySelector('.voicewave p').textContent = 'Ative o microfone';
+
+      this.recognition.onstart = () => {
+        this.recognizing = true;
+        this.root.querySelector('.voicewave p').textContent = 'Fale agora';
+        this.animationButton = true;
+        console.log('onstart voice');
+        this._cdr.detectChanges();
+      };
+
+      this.recognition.onerror = (event: any) => {
+        this.animationButton = false;
+        if (event.error === 'no-speech') {
+          console.log('onerror voice no-speech');
+          this.ignore_onend = true;
+        }
+        if (event.error === 'audio-capture') {
+          console.log('onerror audio-capture');
+          this.ignore_onend = true;
+        }
+        if (event.error === 'not-allowed') {
+          this.root.querySelector('.voicewave p').textContent =
+            'Ative o microfone';
+          this.ignore_onend = true;
+        }
+        this._cdr.detectChanges();
+      };
+
+      this.recognition.onend = () => {
+        this.recognizing = false;
+        if (this.ignore_onend) {
+          return;
+        }
+        if (!this.final_transcript) {
+          return;
+        }
+        this.root.querySelector('.voicewave .exit').click();
+        this.root.querySelector('.voicewave p').textContent = '';
+      };
+
+      this.recognition.onresult = (event: any) => {
+        var interim_transcript = '';
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            this.final_transcript += event.results[i][0].transcript;
+          } else {
+            interim_transcript += event.results[i][0].transcript;
+          }
+        }
+        if (interim_transcript) {
+          this.root.querySelector('.voicewave p').textContent =
+            interim_transcript;
+        }
+        if (this.final_transcript) {
+          this.root.querySelector('body').removeAttribute('style');
+          console.log(this.final_transcript);
+          this.recognition.stop();
+        }
+      };
     }
-  }
-
-  getClass() {
-    return {
-      ...(this.class ? { [this.class]: true } : {}),
-      [this.animation]: this.openingAnimation && !this.closingAnimation,
-      [`${this.animation}-out`]: this.closingAnimation,
-      [`drawer drawer-${this.drawer}`]: !!this.drawer,
-      shake: this.shakeAnimation,
-      fullscreen: this.fullScreen,
-      blur: this.blur,
-      grayscale: this.grayscale,
-    };
-  }
-
-  getButtonClass(type: string) {
-    const buttonClasses: { [key: string]: string } = {
-      primary: 'btn-primary',
-      secondary: 'btn-secondary',
-      danger: 'btn-danger',
-    };
-
-    return buttonClasses[type] || 'btn-default';
-  }
-
-  onCancel() {
-    this.cancel.emit();
-    this.closeWindow();
-  }
-
-  onConfirm() {
-    this.confirm.emit();
-    this.closeWindow();
   }
 }

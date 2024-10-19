@@ -1,73 +1,22 @@
-<div
-  #modal
-  class="up-window-container"
-  [class.active]="isOpen()"
-  role="dialog"
-  aria-labelledby="dialog-title"
-  aria-describedby="dialog-description"
-  aria-modal="true"
-  [attr.aria-hidden]="!isOpen()"
->
-  <div
-    class="up-window"
-    [ngClass]="getClass()"
-    (click)="$event.stopPropagation()"
-  >
-    @if(!restrictMode || hiddenActions) {
-    <button
-      class="close-window"
-      aria-label="Close window"
-      (click)="closeWindow()"
+<section class="voicewave" [class.active]="show">
+  <button class="exit" type="button" (click)="disableVoice()">
+    <i class="icon icon-exit">X</i>
+  </button>
+  <p>Fale agora</p>
+  <button type="button" class="btn-voice" [class.active]="animationButton">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
     >
-      &times;
-    </button>
-    } @if(title || subtitle) {
-    <div class="up-window-header">
-      @if(title) {
-      <h3 id="dialog-title" class="up-window-title">{{ title }}</h3>
-      } @if(subtitle) {
-      <h4 id="dialog-description" class="up-window-subtitle">
-        {{ subtitle }}
-      </h4>
-      }
-    </div>
-    }
-
-    <div class="up-window-body">
-      <ng-content></ng-content>
-    </div>
-
-    @if(!hiddenActions) {
-    <div class="up-window-footer" [ngClass]="'align-' + buttonAlignment">
-      <ng-content select="[footer]"></ng-content>
-      @if(!hasFooterContent()) {
-        <button
-          class="btn btn-cancel"
-          [ngClass]="getButtonClass(cancelType)"
-          (click)="onCancel()"
-          [attr.aria-label]="cancelText"
-        >
-          {{ cancelText }}
-        </button>
-        <button
-          class="btn btn-confirm"
-          [ngClass]="getButtonClass(confirmType)"
-          (click)="onConfirm()"
-          [attr.aria-label]="confirmText"
-        >
-          {{ confirmText }}
-        </button>
-      }
-    </div>
-    }
-  </div>
-  <div
-    class="overlay"
-    (click)="closeWindow('overlay')"
-    [class.fade]="openingAnimation"
-    [class.fade-out]="closingAnimation"
-    [class.active]="isOpen()"
-    [class.blur]="blur"
-    [class.grayscale]="grayscale"
-  ></div>
-</div>
+      <path
+        d="M17 11.998c0 2.76-2.23 5-4.99 5l-.002.002a4.994 4.994 0 01-4.979-5h-2c0 3.52 2.59 6.433 5.98 6.92v3.078h.01V22h2v-3.08h-.01A6.982 6.982 0 0019 11.998z"
+      />
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path
+        d="M12 15c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v7c0 1.66 1.34 3 3 3z"
+      />
+    </svg>
+  </button>
+</section>
