@@ -5,6 +5,7 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 import { ModalinstallComponent } from './components/modal-install/modal-install.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { FormsModule } from '@angular/forms';
+import { VoiceWave } from '../../projects/voicewave-angular/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     ModalinstallComponent,
     DarkmodeComponent,
     AppFooterComponent,
+    VoiceWave
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

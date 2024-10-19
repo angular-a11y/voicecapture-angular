@@ -3,4 +3,3 @@
  */
 
 export * from './lib/voicewave-angular.component';
-export * from './lib/voicewave-angular.module';
