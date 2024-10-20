@@ -1,11 +1,12 @@
 import {
   Component,
   OnInit,
-  DoCheck,
+  OnChanges,
   Input,
   Output,
   EventEmitter,
   ChangeDetectorRef,
+  SimpleChanges,
 } from '@angular/core';
 
 @Component({
@@ -17,117 +18,129 @@ import {
     './voicewave-angular.variables.scss',
   ],
 })
-export class VoiceWave implements OnInit, DoCheck {
+export class VoiceWave implements OnInit, OnChanges {
   @Input() show: boolean = false;
-  @Output() updateVoice = new EventEmitter<any>();
-  final_transcript: string = '';
-  recognizing: boolean = false;
-  ignore_onend: any;
-  recognition: any;
-  animationButton: boolean = false;
-  root = <any>window.document;
+  @Output() updateVoice = new EventEmitter<boolean>();
 
-  constructor(private _cdr: ChangeDetectorRef) {}
+  finalTranscript: string = '';
+  recognizing: boolean = false;
+  ignoreOnEnd: boolean = false;
+  recognition: any = null;
+  animationButton: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.voiceSetup();
-    this.show ? this.activeVoice() : this.desactiveVoice();
+    this.setupVoiceRecognition();
   }
 
-  ngDoCheck(): void {
-    this.show ? this.activeVoice() : this.desactiveVoice();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['show']) {
+      this.show ? this.activateVoice() : this.deactivateVoice();
+    }
   }
 
-  disableVoice() {
-    this.updateVoice.next(false);
+  disableVoice(): void {
+    this.updateVoice.emit(false);
   }
 
-  activeVoice() {
-    if (!this.recognizing) {
+  activateVoice(): void {
+    if (!this.recognizing && this.recognition) {
       this.recognizing = true;
-      this.final_transcript = '';
+      this.finalTranscript = '';
       this.recognition.start();
     }
   }
 
-  desactiveVoice() {
-    if (this.recognizing) {
+  deactivateVoice(): void {
+    if (this.recognizing && this.recognition) {
       this.recognizing = false;
       this.animationButton = false;
       this.recognition.stop();
     }
   }
 
-  voiceSetup() {
+  setupVoiceRecognition(): void {
     if (!('webkitSpeechRecognition' in window)) {
-      console.log('atualize SpeechRecognition');
-    } else {
-      this.recognition = new (<any>window).webkitSpeechRecognition();
+      console.warn('SpeechRecognition not supported, please update your browser.');
+      return;
+    }
 
-      this.recognition.continuous = false;
-      this.recognition.interimResults = true;
+    this.recognition = new (window as any).webkitSpeechRecognition();
+    this.recognition.continuous = false;
+    this.recognition.lang = 'pt-BR';
+    this.recognition.interimResults = true;
 
-      this.final_transcript = '';
-      this.ignore_onend = false;
-      this.root.querySelector('.voicewave p').textContent = 'Ative o microfone';
+    this.recognition.onstart = () => {
+      this.recognizing = true;
+      this.updateText('Speak now');
+      this.animationButton = true;
+      this.cdr.markForCheck();
+    };
 
-      this.recognition.onstart = () => {
-        this.recognizing = true;
-        this.root.querySelector('.voicewave p').textContent = 'Fale agora';
-        this.animationButton = true;
-        console.log('onstart voice');
-        this._cdr.detectChanges();
-      };
+    this.recognition.onerror = (event: any) => {
+      this.animationButton = false;
+      this.handleError(event.error);
+      this.cdr.markForCheck();
+    };
 
-      this.recognition.onerror = (event: any) => {
-        this.animationButton = false;
-        if (event.error === 'no-speech') {
-          console.log('onerror voice no-speech');
-          this.ignore_onend = true;
-        }
-        if (event.error === 'audio-capture') {
-          console.log('onerror audio-capture');
-          this.ignore_onend = true;
-        }
-        if (event.error === 'not-allowed') {
-          this.root.querySelector('.voicewave p').textContent =
-            'Ative o microfone';
-          this.ignore_onend = true;
-        }
-        this._cdr.detectChanges();
-      };
+    this.recognition.onend = () => {
+      this.recognizing = false;
+      if (!this.ignoreOnEnd && this.finalTranscript) {
+        this.updateText('');
+        document.querySelector('.voicewave .exit')?.dispatchEvent(new Event('click'));
+      }
+    };
 
-      this.recognition.onend = () => {
-        this.recognizing = false;
-        if (this.ignore_onend) {
-          return;
-        }
-        if (!this.final_transcript) {
-          return;
-        }
-        this.root.querySelector('.voicewave .exit').click();
-        this.root.querySelector('.voicewave p').textContent = '';
-      };
+    this.recognition.onresult = (event: any) => {
+      this.handleResults(event);
+    };
+  }
 
-      this.recognition.onresult = (event: any) => {
-        var interim_transcript = '';
-        for (var i = event.resultIndex; i < event.results.length; ++i) {
-          if (event.results[i].isFinal) {
-            this.final_transcript += event.results[i][0].transcript;
-          } else {
-            interim_transcript += event.results[i][0].transcript;
-          }
-        }
-        if (interim_transcript) {
-          this.root.querySelector('.voicewave p').textContent =
-            interim_transcript;
-        }
-        if (this.final_transcript) {
-          this.root.querySelector('body').removeAttribute('style');
-          console.log(this.final_transcript);
-          this.recognition.stop();
-        }
-      };
+  private handleError(error: string): void {
+    switch (error) {
+      case 'no-speech':
+        console.warn('No speech detected.');
+        this.ignoreOnEnd = true;
+        break;
+      case 'audio-capture':
+        console.warn('Audio capture problem.');
+        this.ignoreOnEnd = true;
+        break;
+      case 'not-allowed':
+        this.updateText('Enable the microphone');
+        this.ignoreOnEnd = true;
+        break;
+      default:
+        console.warn('Unknown error:', error);
+        break;
+    }
+  }
+
+  private handleResults(event: any): void {
+    let interimTranscript = '';
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        this.finalTranscript += event.results[i][0].transcript;
+      } else {
+        interimTranscript += event.results[i][0].transcript;
+      }
+    }
+
+    this.updateText(interimTranscript || this.finalTranscript);
+
+    if (this.finalTranscript) {
+      document.body.removeAttribute('style');
+      console.log(this.finalTranscript);
+      this.recognition?.stop();
+    }
+  }
+
+  private updateText(text: string): void {
+    const textElement = document.querySelector('.voicewave p');
+    if (textElement) {
+      textElement.textContent = text;
     }
   }
 }

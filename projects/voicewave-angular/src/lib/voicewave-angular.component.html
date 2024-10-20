@@ -1,4 +1,4 @@
-<section class="voicewave" [class.active]="show">
+<section class="voicewave" [class.active]="show" (click)="disableVoice()">
   <button class="exit" type="button" (click)="disableVoice()">
     <i class="icon icon-exit">X</i>
   </button>
