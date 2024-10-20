@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { ModalinstallComponent } from './components/modal-install/modal-install.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
-import { VoiceWaveAngularModule } from '../../projects/voicewave-angular/src/public-api';
+import { VoiceWave } from '../../projects/voicewave-angular/src/public-api';
 import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
         DarkmodeComponent,
         AppHeaderComponent,
         ModalinstallComponent,
-        VoiceWaveAngularModule,
+        VoiceWave,
         AppFooterComponent
       ],
     }).compileComponents();

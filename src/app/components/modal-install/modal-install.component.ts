@@ -26,7 +26,7 @@ export class ModalinstallComponent {
   codeExample: string = `// Example Component
 import { Component } from '@angular/core';
 import { signal, WritableSignal } from 'signals';
-import VoiceWaveAngularModule from 'voicewave-angular';
+import { VoiceWave } from 'voicewave-angular';
 
 @Component({
   selector: 'app-window-example',
