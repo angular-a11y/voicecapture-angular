@@ -8,7 +8,7 @@ describe('VoiceWave', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VoiceWave],
+      imports: [VoiceWave],
     }).compileComponents();
   });
 
