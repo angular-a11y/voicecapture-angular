@@ -21,6 +21,7 @@ import {
 export class VoiceWave implements OnInit, OnChanges {
   @Input() show: boolean = false;
   @Output() updateVoice = new EventEmitter<boolean>();
+  @Output() voiceTranscript = new EventEmitter<string>();
 
   finalTranscript: string = '';
   recognizing: boolean = false;
@@ -132,7 +133,7 @@ export class VoiceWave implements OnInit, OnChanges {
 
     if (this.finalTranscript) {
       document.body.removeAttribute('style');
-      console.log(this.finalTranscript);
+      this.voiceTranscript.emit(this.finalTranscript);
       this.recognition?.stop();
     }
   }

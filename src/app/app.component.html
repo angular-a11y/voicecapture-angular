@@ -27,10 +27,21 @@
       </div>
     </div>
     <div class="content">
-      <button class="button-voicewave-example" type="button" (click)="openVoiceWave()">
+      <button
+        class="button-voicewave-example"
+        type="button"
+        (click)="openVoiceWave()"
+      >
         Open VoiceWave Example
       </button>
-      <voicewave [show]="isVoiceWaveExample" (updateVoice)="handleVoice($event)" />
+      <voicewave
+        [show]="isVoiceWaveExample"
+        (updateVoice)="handleVoice($event)"
+        (voiceTranscript)="returnVoiceTranscript($event)"
+      />
+      @if(voiceTextTranscript) {
+        <p>{{ voiceTextTranscript }}</p>
+      }
     </div>
   </main>
   <app-footer />

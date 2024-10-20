@@ -28,6 +28,7 @@ export class AppComponent {
   codeString: string = 'npm install voicewave-angular';
   isModalActive: boolean = false;
   isVoiceWaveExample: boolean = false;
+  voiceTextTranscript!: string;
 
   openModal(): void {
     this.isModalActive = true;
@@ -45,5 +46,9 @@ export class AppComponent {
 
   handleVoice(type: boolean) {
     this.isVoiceWaveExample = type;
+  }
+
+  returnVoiceTranscript(transcript: string) {
+    this.voiceTextTranscript = transcript;
   }
 }
