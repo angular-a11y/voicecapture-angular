@@ -27,7 +27,10 @@
       </div>
     </div>
     <div class="content">
-      <voicewave />
+      <button class="button-voicewave-example" type="button" (click)="openVoiceWave()">
+        Open VoiceWave Example
+      </button>
+      <voicewave [show]="isVoiceWaveExample" (updateVoice)="handleVoice($event)" />
     </div>
   </main>
   <app-footer />

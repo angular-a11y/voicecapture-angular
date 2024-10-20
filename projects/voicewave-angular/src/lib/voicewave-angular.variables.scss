@@ -1,4 +1,4 @@
-body {
+::ng-deep body {
   --voicewave-color-text: #000;
   --voicewave-default: #ccc;
   --voicewave-primary: #209665;
@@ -8,6 +8,21 @@ body {
   --voicewave-shadow-tooltip: rgba(0, 0, 0, 0.2);
   --voicewave-text: #fff;
   --voicewave-background-svg: #000;
+
+  --main-color: #303030;
+  --main-color-rgb: 0, 0, 0;
+  --main-color-primary: 26, 115, 232;
+  --main-color-secondary: green;
+  --main-bg-color-primary: #fff;
+  --main-bg-color-secondary: #f2f2f2;
+  --main-bg-color-profile: #e9eef6;
+  --main-border-color: #747775;
+  --main-invert: 0;
+  --logo-filter: none;
+  --input-bg-color: #fff;
+  --input-bg-color-hover: #fff;
+  --input-drop-shadow: #20212447;
+
   &.darkmode {
     --voicewave-color-text: #fff;
     --voicewave-default: #555;
@@ -18,5 +33,19 @@ body {
     --voicewave-shadow-tooltip: rgba(0, 0, 0, 0.2);
     --voicewave-text: #000;
     --voicewave-background-svg: #fff;
+
+    --main-color: #fff;
+    --main-color-rgb: 255, 255, 255;
+    --main-color-primary: 26, 115, 232;
+    --main-color-secondary: green;
+    --main-bg-color-primary: #fff;
+    --main-bg-color-secondary: #f2f2f2;
+    --main-bg-color-profile: #e9eef6;
+    --main-border-color: #747775;
+    --main-invert: 0;
+    --logo-filter: none;
+    --input-bg-color: #fff;
+    --input-bg-color-hover: #fff;
+    --input-drop-shadow: #20212447;
   }
 }

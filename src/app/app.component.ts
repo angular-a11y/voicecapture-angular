@@ -17,7 +17,7 @@ import { VoiceWave } from '../../projects/voicewave-angular/src/public-api';
     ModalinstallComponent,
     DarkmodeComponent,
     AppFooterComponent,
-    VoiceWave
+    VoiceWave,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -27,6 +27,7 @@ export class AppComponent {
 
   codeString: string = 'npm install voicewave-angular';
   isModalActive: boolean = false;
+  isVoiceWaveExample: boolean = false;
 
   openModal(): void {
     this.isModalActive = true;
@@ -36,5 +37,13 @@ export class AppComponent {
   closeModal(): void {
     this.isModalActive = false;
     this.renderer.removeClass(document.body, 'modal-active');
+  }
+
+  openVoiceWave() {
+    this.isVoiceWaveExample = true;
+  }
+
+  handleVoice(type: boolean) {
+    this.isVoiceWaveExample = type;
   }
 }

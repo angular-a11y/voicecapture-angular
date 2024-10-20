@@ -12,7 +12,10 @@ import {
   selector: 'voicewave',
   standalone: true,
   templateUrl: './voicewave-angular.component.html',
-  styleUrls: ['./voicewave-angular.component.scss'],
+  styleUrls: [
+    './voicewave-angular.component.scss',
+    './voicewave-angular.variables.scss',
+  ],
 })
 export class VoiceWave implements OnInit, DoCheck {
   @Input() show: boolean = false;
