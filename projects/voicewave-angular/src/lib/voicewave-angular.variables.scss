@@ -38,14 +38,14 @@
     --main-color-rgb: 255, 255, 255;
     --main-color-primary: 26, 115, 232;
     --main-color-secondary: green;
-    --main-bg-color-primary: #fff;
-    --main-bg-color-secondary: #f2f2f2;
-    --main-bg-color-profile: #e9eef6;
+    --main-bg-color-primary: #202124;
+    --main-bg-color-secondary: #171717;
+    --main-bg-color-profile: #202124;
     --main-border-color: #747775;
-    --main-invert: 0;
-    --logo-filter: none;
-    --input-bg-color: #fff;
-    --input-bg-color-hover: #fff;
-    --input-drop-shadow: #20212447;
+    --main-invert: 1;
+    --logo-filter: grayscale(1) brightness(3);
+    --input-bg-color: #202124;
+    --input-bg-color-hover: #303134;
+    --input-drop-shadow: #171717;
   }
 }
