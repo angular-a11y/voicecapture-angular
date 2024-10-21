@@ -121,6 +121,15 @@ h2 {
   .language {
     width: 50%;
   }
+
+  @media (max-width: 620px) {
+    flex-direction: column;
+    .button-voicecapture-example,
+    .language {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
 }
 
 .content-title {
@@ -189,6 +198,9 @@ h2 {
 
 .install {
   display: flex;
+  @media (max-width: 620px) {
+    flex-direction: column;
+  }
 }
 
 .examples {
@@ -202,4 +214,17 @@ h2 {
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
+}
+
+
+@media (max-width: 620px) {
+  .button-modal {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .button-modal,
+  .button-voicecapture-example {
+    justify-content: start;
+  }
 }
