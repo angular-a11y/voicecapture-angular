@@ -40,8 +40,6 @@
     "@angular/platform-browser": "^18.2.8",
     "@angular/platform-browser-dynamic": "^18.2.8",
     "@angular/router": "^18.2.8",
-    "darkmode-angular": "^0.1.4",
-    "highlight.js": "^11.10.0",
     "jsonminify": "^0.4.2",
     "nucleus-angular": "^0.0.1",
     "rxjs": "~7.8.0",
