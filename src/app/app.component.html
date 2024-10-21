@@ -27,19 +27,23 @@
       </div>
     </div>
     <div class="content">
+      <h2>VoiceWave Example</h2>
       <button
         class="button-voicewave-example"
         type="button"
         (click)="openVoiceWave()"
       >
-        Open VoiceWave Example
+        <span class="material-symbols-outlined"> &#xe029; </span> VoiceWave
       </button>
 
       <voicewave
         [start]="isVoiceWaveExample"
         (voiceTranscript)="returnVoiceTranscript($event)"
-      ></voicewave>
-      @if(voiceTextTranscript) {
+      />
+    </div>
+    @if(voiceTextTranscript) {
+      <div class="content">
+        <h2>Transcript Results</h2>
         <p class="voice-text">{{ voiceTextTranscript }}</p>
         <div class="input-group">
           <label for="voiceTextInput" class="input-label">Input Example:</label>
@@ -65,9 +69,8 @@
         <button class="button-display-example" type="button">
           {{ voiceTextTranscript }}
         </button>
-      }
-    </div>
-
+      </div>
+    }
   </main>
   <app-footer />
 </div>
