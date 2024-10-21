@@ -36,7 +36,7 @@ export class VoiceWave implements OnInit {
       } else {
         this.deactivateVoice();
       }
-    });
+    }, { allowSignalWrites: true });
   }
 
   ngOnInit(): void {
