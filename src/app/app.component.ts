@@ -29,6 +29,7 @@ export class AppComponent {
   isModalActive: boolean = false;
   isVoiceCaptureExample: WritableSignal<boolean> = signal(false);
   voiceTextTranscript!: string;
+  langSelect = 'en-US';
 
   openModal(): void {
     this.isModalActive = true;

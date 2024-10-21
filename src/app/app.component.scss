@@ -14,6 +14,22 @@
   z-index: 11;
 }
 
+.lang-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.lang-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  font-size: 16px;
+  color: var(--color-text);
+  background-color: var(--vtl-background);
+}
+
 .voice-text {
   font-size: 18px;
   color: var(--color-text);

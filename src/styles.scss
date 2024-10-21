@@ -114,6 +114,15 @@ h2 {
     0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.content-actions {
+  display: flex;
+  gap: 20px;
+  button,
+  .language {
+    width: 50%;
+  }
+}
+
 .content-title {
   margin: 0;
 }

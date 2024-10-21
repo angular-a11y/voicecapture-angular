@@ -46,6 +46,7 @@ export class VoiceCapture implements OnInit {
 
   activateVoice(): void {
     if (!this.recognizing && this.recognition) {
+      this.recognition.lang = this.lang;
       this.recognizing = true;
       this.finalTranscript = '';
       this.recognition.start();
