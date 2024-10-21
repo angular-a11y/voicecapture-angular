@@ -1,0 +1,41 @@
+.lang-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.lang-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  font-size: 16px;
+  color: var(--color-text);
+  background-color: var(--vtl-background);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-label {
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  background-color: var(--vtl-background);
+  color: var(--color-text);
+}
+
+.textarea {
+  resize: vertical;
+  height: 100px;
+}

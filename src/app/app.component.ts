@@ -1,57 +1,53 @@
-import { Component, Renderer2, signal, WritableSignal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { DarkmodeComponent } from 'darkmode-angular';
-import { AppHeaderComponent } from './components/app-header/app-header.component';
-import { ModalinstallComponent } from './components/modal-install/modal-install.component';
-import { AppFooterComponent } from './components/app-footer/app-footer.component';
-import { FormsModule } from '@angular/forms';
-import { VoiceCapture } from '../../projects/voicecapture-angular/src/public-api';
+import { Component } from '@angular/core';
+import { NucleusAngularApp } from 'nucleus-angular';
+import { VoiceCaptureExample } from './example/example.component';
 
+import pkg from '../../package.json';
+import pkgNPM from '../../projects/voicecapture-angular/package.json';
+import { ExampleComponent } from './app.example';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
-    FormsModule,
-    AppHeaderComponent,
-    ModalinstallComponent,
-    DarkmodeComponent,
-    AppFooterComponent,
-    VoiceCapture,
+    NucleusAngularApp,
+    VoiceCaptureExample,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  constructor(private renderer: Renderer2) {}
+  public appVersion;
+  public angularVersion;
+  public configNucleus: {
+    name: string;
+    github: string;
+    npm: string;
+    appVersion: string;
+    angularVersion: string;
+    stepsInstall: Array<{ name: string; language: string; content: string }>;
+  };
 
-  codeString: string = 'npm install voicecapture-angular';
-  isModalActive: boolean = false;
-  isVoiceCaptureExample: WritableSignal<boolean> = signal(false);
-  voiceTextTranscript!: string;
-  langSelect = 'en';
-  modeSelect = 'fullscreen';
-
-  openModal(): void {
-    this.isModalActive = true;
-    this.renderer.addClass(document.body, 'modal-active');
-  }
-
-  closeModal(): void {
-    this.isModalActive = false;
-    this.renderer.removeClass(document.body, 'modal-active');
-  }
-
-  openVoiceCapture(mode: string) {
-    this.modeSelect = mode;
-    this.isVoiceCaptureExample.set(true);
-  }
-
-  returnVoiceTranscript(transcript: string) {
-    this.voiceTextTranscript = transcript;
-  }
-
-  alertExampleButton() {
-    alert(this.voiceTextTranscript);
+  constructor() {
+    this.appVersion = pkgNPM.version;
+    this.angularVersion = pkg.dependencies?.['@angular/core'].replace('^', '');
+    this.configNucleus = {
+      name: 'voicecapture-angular',
+      github: 'https://github.com/livre-saber/voicecapture-angular',
+      npm: 'https://www.npmjs.com/package/voicecapture-angular',
+      appVersion: this.appVersion,
+      angularVersion: this.angularVersion,
+      stepsInstall: [
+        {
+          name: 'Install',
+          language: 'bash',
+          content: 'npm install voicecapture-angular',
+        },
+        {
+          name: 'Usage',
+          language: 'tsx',
+          content: ExampleComponent,
+        },
+      ],
+    };
   }
 }

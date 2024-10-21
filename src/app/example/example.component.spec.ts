@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppCodeComponent } from './app-code.component';
+import { VoiceCaptureExample } from './example.component';
 
-describe('AppCodeComponent', () => {
-  let component: AppCodeComponent;
-  let fixture: ComponentFixture<AppCodeComponent>;
+describe('VoiceCaptureExample', () => {
+  let component: VoiceCaptureExample;
+  let fixture: ComponentFixture<VoiceCaptureExample>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppCodeComponent]
+      imports: [VoiceCaptureExample]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AppCodeComponent);
+    fixture = TestBed.createComponent(VoiceCaptureExample);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
