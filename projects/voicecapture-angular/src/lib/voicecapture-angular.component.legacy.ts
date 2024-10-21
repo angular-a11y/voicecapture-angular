@@ -19,7 +19,7 @@ import { translates } from './voicecapture-angular.translate';
     './voicecapture-angular.variables.scss',
   ],
 })
-export class VoiceCapture implements OnInit {
+export class VoiceCaptureLegacy implements OnInit {
   @Input() start: WritableSignal<boolean> = signal(false);
   @Input() lang: string = 'en';
   @Input() mode: string = 'fullscreen';

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VoiceCapture } from './voicecapture-angular.component.legacy';
+import { VoiceCaptureLegacy } from './voicecapture-angular.component.legacy';
 
 @NgModule({
-  declarations: [VoiceCapture],
+  declarations: [VoiceCaptureLegacy],
   imports: [CommonModule],
-  exports: [VoiceCapture],
+  exports: [VoiceCaptureLegacy],
 })
 export class VoiceCaptureModule {}
