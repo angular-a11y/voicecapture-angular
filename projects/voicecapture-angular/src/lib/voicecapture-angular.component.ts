@@ -98,12 +98,14 @@ export class VoiceCapture implements OnInit {
 
     this.recognition.onend = () => {
       this.recognizing = false;
+
       if (!this.ignoreOnEnd && this.finalTranscript) {
         this.updateText('');
-        document
-          .querySelector('.voicecapture .exit')
-          ?.dispatchEvent(new Event('click'));
+        this.deactivateVoice();
       }
+
+      this.animationButton = false;
+      this.cdr.markForCheck();
     };
 
     this.recognition.onresult = (event: any) => {
@@ -146,7 +148,7 @@ export class VoiceCapture implements OnInit {
 
     if (this.finalTranscript) {
       this.voiceTranscript.emit(this.finalTranscript);
-      this.recognition?.stop();
+      this.deactivateVoice();
     }
   }
 
