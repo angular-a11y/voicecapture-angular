@@ -30,12 +30,6 @@
   background-color: var(--vtl-background);
 }
 
-.voice-text {
-  font-size: 18px;
-  color: var(--color-text);
-  margin: 10px 0;
-}
-
 .input-group {
   display: flex;
   flex-direction: column;
@@ -60,20 +54,4 @@
 .textarea {
   resize: vertical;
   height: 100px;
-}
-
-.button-display-example {
-  background-color: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  align-self: flex-start;
-  margin-top: 1rem;
-}
-
-.button-display-example:hover {
-  background-color: var(--secondary);
 }
