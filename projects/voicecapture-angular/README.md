@@ -85,6 +85,10 @@ Controls the initiation of voice capture.
 
 Language of voice capture, this default is en-US.
 
+### @Input() mode: string = 'fullscreen'
+
+Mode of voice capture, this default is `fullscreen` other value `float`.
+
 **Example**: Start capturing voice input.
 
 ```html
