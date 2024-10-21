@@ -81,6 +81,10 @@ In the `VoiceCaptureExampleComponent`, a `WritableSignal<boolean>` named `isVoic
 
 Controls the initiation of voice capture.
 
+### @Input() lang: string = 'en-US'
+
+Language of voice capture, this default is en-US.
+
 **Example**: Start capturing voice input.
 
 ```html
