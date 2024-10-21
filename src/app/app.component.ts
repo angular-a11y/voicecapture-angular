@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Renderer2, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DarkmodeComponent } from 'darkmode-angular';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
@@ -27,7 +27,7 @@ export class AppComponent {
 
   codeString: string = 'npm install voicewave-angular';
   isModalActive: boolean = false;
-  isVoiceWaveExample: boolean = false;
+  isVoiceWaveExample: WritableSignal<boolean> = signal(false);
   voiceTextTranscript!: string;
 
   openModal(): void {
@@ -41,11 +41,7 @@ export class AppComponent {
   }
 
   openVoiceWave() {
-    this.isVoiceWaveExample = true;
-  }
-
-  handleVoice(type: boolean) {
-    this.isVoiceWaveExample = type;
+    this.isVoiceWaveExample.set(true);
   }
 
   returnVoiceTranscript(transcript: string) {
