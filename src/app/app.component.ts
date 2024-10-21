@@ -47,4 +47,8 @@ export class AppComponent {
   returnVoiceTranscript(transcript: string) {
     this.voiceTextTranscript = transcript;
   }
+
+  alertExampleButton() {
+    alert(this.voiceTextTranscript);
+  }
 }
