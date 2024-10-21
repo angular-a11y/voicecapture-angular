@@ -30,7 +30,6 @@ export class VoiceCapture implements OnInit {
 
   finalTranscript: string = '';
   recognizing: boolean = false;
-  ignoreOnEnd: boolean = false;
   recognition: any = null;
   animationButton: boolean = false;
   translations: { [key: string]: { [key: string]: string } } = translates;
@@ -55,8 +54,8 @@ export class VoiceCapture implements OnInit {
   activateVoice(): void {
     if (!this.recognizing && this.recognition) {
       this.recognition.lang = this.lang;
-      this.recognizing = true;
       this.finalTranscript = '';
+      this.recognizing = true;
       this.recognition.start();
     }
   }
@@ -91,6 +90,7 @@ export class VoiceCapture implements OnInit {
     };
 
     this.recognition.onerror = (event: any) => {
+      console.error('Recognition error (onerror event):', event.error);
       this.animationButton = false;
       this.handleError(event.error);
       this.cdr.markForCheck();
@@ -99,9 +99,16 @@ export class VoiceCapture implements OnInit {
     this.recognition.onend = () => {
       this.recognizing = false;
 
-      if (!this.ignoreOnEnd && this.finalTranscript) {
+      if (this.finalTranscript) {
         this.updateText('');
-        this.deactivateVoice();
+        this.voiceTranscript.emit(this.finalTranscript);
+      } else {
+        console.warn('Recognition stopped without result.');
+        this.updateText('noSpeech');
+
+        setTimeout(() => {
+          this.deactivateVoice();
+        }, 5000);
       }
 
       this.animationButton = false;
@@ -114,23 +121,30 @@ export class VoiceCapture implements OnInit {
   }
 
   private handleError(error: string): void {
+    console.warn('Handling error:', error);
+    this.updateText(error);
+
     switch (error) {
       case 'no-speech':
         console.warn(this.getTranslation('noSpeech'));
-        this.ignoreOnEnd = true;
+        this.updateText('noSpeech');
         break;
       case 'audio-capture':
         console.warn(this.getTranslation('audioCapture'));
-        this.ignoreOnEnd = true;
+        this.updateText('audioCapture');
         break;
       case 'not-allowed':
+        console.warn(this.getTranslation('enableMicrophone'));
         this.updateText('enableMicrophone');
-        this.ignoreOnEnd = true;
         break;
       default:
         console.warn('Unknown error:', error);
         break;
     }
+
+    setTimeout(() => {
+      this.deactivateVoice();
+    }, 5000);
   }
 
   private handleResults(event: any): void {
