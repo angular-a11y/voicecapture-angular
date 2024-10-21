@@ -35,7 +35,7 @@ describe('AppVersionComponent', () => {
     component.appVersion = '1.0.0'; // Mocking appVersion
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.app-version:nth-child(2) span').textContent).toContain('voicewave-angular');
+    expect(compiled.querySelector('.app-version:nth-child(2) span').textContent).toContain('voicecapture-angular');
     expect(compiled.querySelector('.app-version:nth-child(2) b').textContent).toContain('1.0.0');
   });
 
@@ -46,7 +46,7 @@ describe('AppVersionComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.app-version:nth-child(1)').textContent).toContain('Angular');
     expect(compiled.querySelector('.app-version:nth-child(1) b').textContent).toContain('12.3.4');
-    expect(compiled.querySelector('.app-version:nth-child(2) span').textContent).toContain('voicewave-angular');
+    expect(compiled.querySelector('.app-version:nth-child(2) span').textContent).toContain('voicecapture-angular');
     expect(compiled.querySelector('.app-version:nth-child(2) b').textContent).toContain('1.0.0');
   });
 

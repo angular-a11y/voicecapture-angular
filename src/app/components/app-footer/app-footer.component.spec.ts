@@ -29,7 +29,7 @@ describe('AppFooterComponent', () => {
     const linkElement: HTMLAnchorElement | null = footerElement.querySelector('a');
     expect(linkElement).toBeTruthy();
     if (linkElement) {
-      expect(linkElement.getAttribute('href')).toBe('https://github.com/angular-a11y/voicewave-angular');
+      expect(linkElement.getAttribute('href')).toBe('https://github.com/angular-a11y/voicecapture-angular');
       expect(linkElement.getAttribute('target')).toBe('_blank');
     }
 

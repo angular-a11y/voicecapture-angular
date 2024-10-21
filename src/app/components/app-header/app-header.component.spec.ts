@@ -22,7 +22,7 @@ describe('AppHeaderComponent', () => {
 
   it('should render the logo link with correct attributes', () => {
     const logoLink = fixture.debugElement.query(By.css('.logo')).nativeElement;
-    expect(logoLink.href).toBe('https://www.npmjs.com/package/voicewave-angular');
+    expect(logoLink.href).toBe('https://www.npmjs.com/package/voicecapture-angular');
     expect(logoLink.getAttribute('target')).toBe('_blank');
   });
 

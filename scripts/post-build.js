@@ -5,7 +5,7 @@ const glob = require('glob');
 const jsonminify = require('jsonminify');
 
 // Diretório de saída da build
-const outputDir = 'dist/voicewave-angular';
+const outputDir = 'dist/voicecapture-angular';
 
 // Função para minificar um arquivo e remover a linha `//# sourceMappingURL=`
 async function minifyFile(filePath) {

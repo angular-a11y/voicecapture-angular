@@ -1,12 +1,12 @@
 {
-  "name": "voicewave-angular-spa",
+  "name": "voicecapture-angular-spa",
   "version": "0.0.3",
   "author": "lucasferreiralimax (https://github.com/lucasferreiralimax)",
-  "repository": "https://github.com/angular-a11y/voicewave-angular",
+  "repository": "https://github.com/angular-a11y/voicecapture-angular",
   "bugs": {
-    "url": "https://github.com/angular-a11y/voicewave-angular/issues"
+    "url": "https://github.com/angular-a11y/voicecapture-angular/issues"
   },
-  "homepage": "https://voicewave-angular.web.app",
+  "homepage": "https://voicecapture-angular.web.app",
   "keywords": [
     "angular",
     "components",
@@ -18,12 +18,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:module": "ng build voicewave-angular && npm run postbuild",
-    "version": "cd projects/voicewave-angular && npm version patch",
-    "publish": "cd dist/voicewave-angular && npm publish",
+    "build:module": "ng build voicecapture-angular && npm run postbuild",
+    "version": "cd projects/voicecapture-angular && npm version patch",
+    "publish": "cd dist/voicecapture-angular && npm publish",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:module": "ng test voicewave-angular",
+    "test:module": "ng test voicecapture-angular",
     "postbuild": "node scripts/post-build.js"
   },
   "private": true,

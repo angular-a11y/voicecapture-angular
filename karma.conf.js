@@ -18,7 +18,7 @@ module.exports = function (config) {
       suppressAll: true
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/voicewave-angular-spa'),
+      dir: require('path').join(__dirname, './coverage/voicecapture-angular-spa'),
       subdir: '.',
       reporters: [
         { type: 'html' },

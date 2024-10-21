@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import pkg from '../../../../package.json';
-import pkgNPM from '../../../../projects/voicewave-angular/package.json';
+import pkgNPM from '../../../../projects/voicecapture-angular/package.json';
 
 @Component({
   selector: 'app-version',

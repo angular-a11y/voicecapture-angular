@@ -13,10 +13,10 @@ import {
 @Component({
   selector: 'voicewave',
   standalone: true,
-  templateUrl: './voicewave-angular.component.html',
+  templateUrl: './voicecapture-angular.component.html',
   styleUrls: [
-    './voicewave-angular.component.scss',
-    './voicewave-angular.variables.scss',
+    './voicecapture-angular.component.scss',
+    './voicecapture-angular.variables.scss',
   ],
 })
 export class VoiceWave implements OnInit {

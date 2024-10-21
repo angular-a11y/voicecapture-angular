@@ -4,8 +4,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "voicewave-angular": ["./dist/voicewave-angular"],
-      "@app/voicewave-angular/*": ["./projects/voicewave-angular/src/lib/voicewave-angular/*"]
+      "voicecapture-angular": ["./dist/voicecapture-angular"],
+      "@app/voicecapture-angular/*": ["./projects/voicecapture-angular/src/lib/voicecapture-angular/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

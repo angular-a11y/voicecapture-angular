@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VoiceWave } from './voicewave-angular.component';
+import { VoiceWave } from './voicecapture-angular.component';
 
 describe('VoiceWave', () => {
   let component: VoiceWave;

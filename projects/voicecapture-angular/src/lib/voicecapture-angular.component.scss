@@ -10,7 +10,7 @@
 
 .voicewave {
   align-items: center;
-  background-color: var(--voicewave-background);
+  background-color: var(--voicecapture-background);
   bottom: 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -28,7 +28,7 @@
   transition: 0.5s all;
   user-select: none;
   z-index: 99;
-  color: var(--voicewave-color-text);
+  color: var(--voicecapture-color-text);
   &.active {
     opacity: 1;
     pointer-events: all;

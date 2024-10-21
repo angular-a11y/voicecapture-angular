@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { ModalinstallComponent } from './components/modal-install/modal-install.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
-import { VoiceWave } from '../../projects/voicewave-angular/src/public-api';
+import { VoiceWave } from '../../projects/voicecapture-angular/src/public-api';
 import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
@@ -68,9 +68,9 @@ describe('AppComponent', () => {
   });
 
   it('should render correct codeString in code-wrapper element', () => {
-    component.codeString = 'npm install voicewave-angular';
+    component.codeString = 'npm install voicecapture-angular';
     fixture.detectChanges();
     const codeWrapperElement = fixture.debugElement.query(By.css('.code-wrapper'));
-    expect(codeWrapperElement.nativeElement.textContent.trim()).toBe('npm install voicewave-angular');
+    expect(codeWrapperElement.nativeElement.textContent.trim()).toBe('npm install voicecapture-angular');
   });
 });

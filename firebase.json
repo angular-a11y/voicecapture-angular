@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/voicewave-angular-spa/browser",
+    "public": "dist/voicecapture-angular-spa/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

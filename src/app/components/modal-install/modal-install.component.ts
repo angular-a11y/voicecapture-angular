@@ -26,7 +26,7 @@ export class ModalinstallComponent {
   codeExample: string = `// Example Component
 import { Component } from '@angular/core';
 import { signal, WritableSignal } from 'signals';
-import { VoiceWave } from 'voicewave-angular';
+import { VoiceWave } from 'voicecapture-angular';
 
 @Component({
   selector: 'app-voicewave-example',
@@ -35,7 +35,7 @@ import { VoiceWave } from 'voicewave-angular';
     Open VoiceWave Example
   </button>
 
-  <voicewave-angular
+  <voicecapture-angular
     [start]="isVoiceWaveExample"
     (voiceTranscript)="returnVoiceTranscript($event)"
   />

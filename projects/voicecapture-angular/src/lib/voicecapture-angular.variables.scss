@@ -1,13 +1,13 @@
 ::ng-deep body {
-  --voicewave-color-text: #000;
-  --voicewave-default: #ccc;
-  --voicewave-primary: #209665;
-  --voicewave-secondary: #116b8f;
-  --voicewave-background: #fff;
-  --voicewave-background-tooltip: #444;
-  --voicewave-shadow-tooltip: rgba(0, 0, 0, 0.2);
-  --voicewave-text: #fff;
-  --voicewave-background-svg: #000;
+  --voicecapture-color-text: #000;
+  --voicecapture-default: #ccc;
+  --voicecapture-primary: #209665;
+  --voicecapture-secondary: #116b8f;
+  --voicecapture-background: #fff;
+  --voicecapture-background-tooltip: #444;
+  --voicecapture-shadow-tooltip: rgba(0, 0, 0, 0.2);
+  --voicecapture-text: #fff;
+  --voicecapture-background-svg: #000;
 
   --main-color: #303030;
   --main-color-rgb: 0, 0, 0;
@@ -24,15 +24,15 @@
   --input-drop-shadow: #20212447;
 
   &.darkmode {
-    --voicewave-color-text: #fff;
-    --voicewave-default: #555;
-    --voicewave-primary: #1e8057;
-    --voicewave-secondary: #0d7eaa;
-    --voicewave-background: #222;
-    --voicewave-background-tooltip: #fff;
-    --voicewave-shadow-tooltip: rgba(0, 0, 0, 0.2);
-    --voicewave-text: #000;
-    --voicewave-background-svg: #fff;
+    --voicecapture-color-text: #fff;
+    --voicecapture-default: #555;
+    --voicecapture-primary: #1e8057;
+    --voicecapture-secondary: #0d7eaa;
+    --voicecapture-background: #222;
+    --voicecapture-background-tooltip: #fff;
+    --voicecapture-shadow-tooltip: rgba(0, 0, 0, 0.2);
+    --voicecapture-text: #000;
+    --voicecapture-background-svg: #fff;
 
     --main-color: #fff;
     --main-color-rgb: 255, 255, 255;
