@@ -10,6 +10,7 @@ import {
   signal,
   effect,
 } from '@angular/core';
+import { translates } from './voicecapture-angular.translate';
 
 @Component({
   selector: 'voicecapture',
@@ -32,15 +33,19 @@ export class VoiceCapture implements OnInit {
   ignoreOnEnd: boolean = false;
   recognition: any = null;
   animationButton: boolean = false;
+  translations: { [key: string]: { [key: string]: string } } = translates;
 
   constructor(private cdr: ChangeDetectorRef) {
-    effect(() => {
-      if (this.start()) {
-        this.activateVoice();
-      } else {
-        this.deactivateVoice();
-      }
-    }, { allowSignalWrites: true });
+    effect(
+      () => {
+        if (this.start()) {
+          this.activateVoice();
+        } else {
+          this.deactivateVoice();
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   ngOnInit(): void {
@@ -80,7 +85,7 @@ export class VoiceCapture implements OnInit {
 
     this.recognition.onstart = () => {
       this.recognizing = true;
-      this.updateText('Speak now');
+      this.updateText('speakNow');
       this.animationButton = true;
       this.cdr.markForCheck();
     };
@@ -109,15 +114,15 @@ export class VoiceCapture implements OnInit {
   private handleError(error: string): void {
     switch (error) {
       case 'no-speech':
-        console.warn('No speech detected.');
+        console.warn(this.getTranslation('noSpeech'));
         this.ignoreOnEnd = true;
         break;
       case 'audio-capture':
-        console.warn('Audio capture problem.');
+        console.warn(this.getTranslation('audioCapture'));
         this.ignoreOnEnd = true;
         break;
       case 'not-allowed':
-        this.updateText('Enable the microphone');
+        this.updateText('enableMicrophone');
         this.ignoreOnEnd = true;
         break;
       default:
@@ -140,16 +145,21 @@ export class VoiceCapture implements OnInit {
     this.updateText(interimTranscript || this.finalTranscript);
 
     if (this.finalTranscript) {
-      document.body.removeAttribute('style');
       this.voiceTranscript.emit(this.finalTranscript);
       this.recognition?.stop();
     }
   }
 
-  private updateText(text: string): void {
-    const textElement = document.querySelector('.voicecapture p');
+  private updateText(key: string): void {
+    const textElement = document.querySelector('.voicecapture .text-tip');
     if (textElement) {
-      textElement.textContent = text;
+      textElement.textContent = this.getTranslation(key);
     }
+  }
+
+  private getTranslation(key: string): string {
+    const translationsForLang =
+      this.translations[this.lang] || this.translations['en-US'];
+    return translationsForLang[key] || key;
   }
 }
