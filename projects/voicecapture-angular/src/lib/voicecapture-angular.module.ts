@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { VoiceCapture } from './voicecapture-angular.component';
 
 @NgModule({
-  declarations: [VoiceCapture],
-  exports: [VoiceCapture],
-  imports: [CommonModule],
+  imports: [CommonModule, VoiceCapture],
 })
 export class VoicecaptureModule {}
