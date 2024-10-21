@@ -81,9 +81,9 @@ In the `VoiceCaptureExampleComponent`, a `WritableSignal<boolean>` named `isVoic
 
 Controls the initiation of voice capture.
 
-### @Input() lang: string = 'en-US'
+### @Input() lang: string = 'en'
 
-Language of voice capture, this default is en-US.
+Language of voice capture, this default is en.
 
 ### @Input() mode: string = 'fullscreen'
 

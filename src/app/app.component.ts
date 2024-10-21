@@ -29,7 +29,7 @@ export class AppComponent {
   isModalActive: boolean = false;
   isVoiceCaptureExample: WritableSignal<boolean> = signal(false);
   voiceTextTranscript!: string;
-  langSelect = 'en-US';
+  langSelect = 'en';
   modeSelect = 'fullscreen';
 
   openModal(): void {

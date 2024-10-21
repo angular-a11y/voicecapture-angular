@@ -24,7 +24,7 @@ import { translates } from './voicecapture-angular.translate';
 })
 export class VoiceCapture implements OnInit {
   @Input() start: WritableSignal<boolean> = signal(false);
-  @Input() lang: string = 'en-US';
+  @Input() lang: string = 'en';
   @Input() mode: string = 'fullscreen';
   @Output() voiceTranscript = new EventEmitter<string>();
 

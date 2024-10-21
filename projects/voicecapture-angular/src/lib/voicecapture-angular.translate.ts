@@ -1,77 +1,77 @@
 export const translates = {
-  'en-US': {
+  en: {
     speakNow: 'Speak now',
     noSpeech: 'No speech detected.',
     audioCapture: 'Audio capture problem.',
     enableMicrophone: 'Enable the microphone',
   },
-  'pt-BR': {
+  pt: {
     speakNow: 'Fale agora',
     noSpeech: 'Nenhuma fala detectada.',
     audioCapture: 'Problema na captura de áudio.',
     enableMicrophone: 'Ative o microfone',
   },
-  'es-ES': {
+  es: {
     speakNow: 'Habla ahora',
     noSpeech: 'No se detectó voz.',
     audioCapture: 'Problema en la captura de audio.',
     enableMicrophone: 'Activa el micrófono',
   },
-  'fr-FR': {
+  fr: {
     speakNow: 'Parlez maintenant',
     noSpeech: 'Aucune parole détectée.',
     audioCapture: 'Problème de capture audio.',
     enableMicrophone: 'Activez le microphone',
   },
-  'de-DE': {
+  de: {
     speakNow: 'Sprich jetzt',
     noSpeech: 'Keine Sprache erkannt.',
     audioCapture: 'Audioproblem.',
     enableMicrophone: 'Aktivieren Sie das Mikrofon',
   },
-  'it-IT': {
+  it: {
     speakNow: 'Parla ora',
     noSpeech: 'Nessuna parola rilevata.',
     audioCapture: 'Problema con la cattura audio.',
     enableMicrophone: 'Abilita il microfono',
   },
-  'ja-JP': {
+  ja: {
     speakNow: '今話してください',
     noSpeech: '音声が検出されませんでした。',
     audioCapture: 'オーディオキャプチャの問題。',
     enableMicrophone: 'マイクを有効にしてください',
   },
-  'zh-CN': {
+  zh: {
     speakNow: '现在说话',
     noSpeech: '没有检测到语音。',
     audioCapture: '音频捕获问题。',
     enableMicrophone: '启用麦克风',
   },
-  'ru-RU': {
+  ru: {
     speakNow: 'Говорите сейчас',
     noSpeech: 'Речь не обнаружена.',
     audioCapture: 'Проблема с захватом звука.',
     enableMicrophone: 'Включите микрофон',
   },
-  'ar-SA': {
+  ar: {
     speakNow: 'تحدث الآن',
     noSpeech: 'لم يتم اكتشاف الكلام.',
     audioCapture: 'مشكلة في التقاط الصوت.',
     enableMicrophone: 'قم بتمكين الميكروفون',
   },
-  'ko-KR': {
+  ko: {
     speakNow: '지금 말하세요',
     noSpeech: '음성이 감지되지 않았습니다.',
     audioCapture: '오디오 캡처 문제.',
     enableMicrophone: '마이크를 활성화하세요',
   },
-  'nl-NL': {
+  nl: {
     speakNow: 'Spreek nu',
     noSpeech: 'Geen spraak gedetecteerd.',
     audioCapture: 'Probleem met audiovangst.',
     enableMicrophone: 'Activeer de microfoon',
   },
-  'sv-SE': {
+  sv: {
     speakNow: 'Tala nu',
     noSpeech: 'Ingen tal upptäckt.',
     audioCapture: 'Problem med ljudinspelning.',
