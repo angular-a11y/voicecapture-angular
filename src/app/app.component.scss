@@ -13,3 +13,49 @@
   right: 0;
   z-index: 11;
 }
+
+.voice-text {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-label {
+  font-size: 16px;
+  color: #666;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.button-display-example {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.button-display-example:hover {
+  background-color: #218838;
+}

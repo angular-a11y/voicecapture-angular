@@ -34,14 +34,40 @@
       >
         Open VoiceWave Example
       </button>
+
       <voicewave
         [start]="isVoiceWaveExample"
         (voiceTranscript)="returnVoiceTranscript($event)"
-      />
+      ></voicewave>
       @if(voiceTextTranscript) {
-        <p>{{ voiceTextTranscript }}</p>
+        <p class="voice-text">{{ voiceTextTranscript }}</p>
+        <div class="input-group">
+          <label for="voiceTextInput" class="input-label">Input Example:</label>
+          <input
+            id="voiceTextInput"
+            class="input-field"
+            type="text"
+            [(ngModel)]="voiceTextTranscript"
+            placeholder="Texto do Voice Transcript"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="voiceTextArea" class="input-label">Textarea Example:</label>
+          <textarea
+            id="voiceTextArea"
+            class="input-field textarea"
+            [(ngModel)]="voiceTextTranscript"
+            placeholder="Texto do Voice Transcript"
+          ></textarea>
+        </div>
+
+        <button class="button-display-example" type="button">
+          {{ voiceTextTranscript }}
+        </button>
       }
     </div>
+
   </main>
   <app-footer />
 </div>
