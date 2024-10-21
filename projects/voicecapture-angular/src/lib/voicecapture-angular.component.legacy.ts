@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -15,7 +14,6 @@ import { translates } from './voicecapture-angular.translate';
 @Component({
   selector: 'voicecapture',
   templateUrl: './voicecapture-angular.component.html',
-  imports: [CommonModule],
   styleUrls: [
     './voicecapture-angular.component.scss',
     './voicecapture-angular.variables.scss',
