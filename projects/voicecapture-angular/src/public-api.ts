@@ -3,3 +3,4 @@
  */
 
 export * from './lib/voicecapture-angular.component';
+export * from './lib/voicecapture-angular.module';
