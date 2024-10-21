@@ -1,12 +1,13 @@
 import {
   Component,
   OnInit,
-  OnChanges,
   Input,
   Output,
   EventEmitter,
   ChangeDetectorRef,
-  SimpleChanges,
+  WritableSignal,
+  signal,
+  effect,
 } from '@angular/core';
 
 @Component({
@@ -18,9 +19,8 @@ import {
     './voicewave-angular.variables.scss',
   ],
 })
-export class VoiceWave implements OnInit, OnChanges {
-  @Input() show: boolean = false;
-  @Output() updateVoice = new EventEmitter<boolean>();
+export class VoiceWave implements OnInit {
+  @Input() start: WritableSignal<boolean> = signal(false);
   @Output() voiceTranscript = new EventEmitter<string>();
 
   finalTranscript: string = '';
@@ -29,20 +29,18 @@ export class VoiceWave implements OnInit, OnChanges {
   recognition: any = null;
   animationButton: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {
+    effect(() => {
+      if (this.start()) {
+        this.activateVoice();
+      } else {
+        this.deactivateVoice();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.setupVoiceRecognition();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['show']) {
-      this.show ? this.activateVoice() : this.deactivateVoice();
-    }
-  }
-
-  disableVoice(): void {
-    this.updateVoice.emit(false);
   }
 
   activateVoice(): void {
@@ -54,6 +52,7 @@ export class VoiceWave implements OnInit, OnChanges {
   }
 
   deactivateVoice(): void {
+    this.start.set(false);
     if (this.recognizing && this.recognition) {
       this.recognizing = false;
       this.animationButton = false;
@@ -63,7 +62,9 @@ export class VoiceWave implements OnInit, OnChanges {
 
   setupVoiceRecognition(): void {
     if (!('webkitSpeechRecognition' in window)) {
-      console.warn('SpeechRecognition not supported, please update your browser.');
+      console.warn(
+        'SpeechRecognition not supported, please update your browser.'
+      );
       return;
     }
 
@@ -89,7 +90,9 @@ export class VoiceWave implements OnInit, OnChanges {
       this.recognizing = false;
       if (!this.ignoreOnEnd && this.finalTranscript) {
         this.updateText('');
-        document.querySelector('.voicewave .exit')?.dispatchEvent(new Event('click'));
+        document
+          .querySelector('.voicewave .exit')
+          ?.dispatchEvent(new Event('click'));
       }
     };
 

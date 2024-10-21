@@ -1,5 +1,5 @@
-<section class="voicewave" [class.active]="show" (click)="disableVoice()">
-  <button class="exit" type="button" (click)="disableVoice()">
+<section class="voicewave" [class.active]="start()" (click)="deactivateVoice()">
+  <button class="exit" type="button" (click)="deactivateVoice()">
     <i class="icon icon-exit">X</i>
   </button>
   <p>Fale agora</p>
