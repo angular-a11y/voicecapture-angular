@@ -11,6 +11,10 @@
   "keywords": [
     "angular",
     "components",
+    "voice",
+    "capture",
+    "transcript",
+    "recognition",
     "modal",
     "window",
     "ui"
