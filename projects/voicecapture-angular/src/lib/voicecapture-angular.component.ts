@@ -21,6 +21,7 @@ import {
 })
 export class VoiceCapture implements OnInit {
   @Input() start: WritableSignal<boolean> = signal(false);
+  @Input() lang: string = 'en-US';
   @Output() voiceTranscript = new EventEmitter<string>();
 
   finalTranscript: string = '';
@@ -70,7 +71,7 @@ export class VoiceCapture implements OnInit {
 
     this.recognition = new (window as any).webkitSpeechRecognition();
     this.recognition.continuous = false;
-    this.recognition.lang = 'pt-BR';
+    this.recognition.lang = this.lang;
     this.recognition.interimResults = true;
 
     this.recognition.onstart = () => {
