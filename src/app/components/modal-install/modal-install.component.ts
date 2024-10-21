@@ -29,19 +29,33 @@ import { signal, WritableSignal } from 'signals';
 import { VoiceWave } from 'voicewave-angular';
 
 @Component({
-  selector: 'app-window-example',
+  selector: 'app-voicewave-example',
   template: \`
-<button class="button-voicewave-example" type="button" (click)="openVoiceWave()">
-  Open VoiceWave Example
-</button>
+  <button (click)="openVoiceWave()">
+    Open VoiceWave Example
+  </button>
 
-<voicewave-angular />\`,
+  <voicewave-angular
+    [start]="isVoiceWaveExample"
+    (voiceTranscript)="returnVoiceTranscript($event)"
+  />
+
+  @if(voiceTextTranscript) {
+    <h2>Transcript Results</h2>
+    <p class="voice-text">{{ voiceTextTranscript }}</p>
+  }
+\`,
 })
-export class WindowExampleComponent {
+export class VoiceWaveExampleComponent {
   isVoiceWaveExample: WritableSignal<boolean> = signal(false);
+  voiceTextTranscript!: string;
 
   openVoiceWave() {
     this.isVoiceWaveExample.set(true);
+  }
+
+  returnVoiceTranscript(transcript: string) {
+    this.voiceTextTranscript = transcript;
   }
 }`;
 }
