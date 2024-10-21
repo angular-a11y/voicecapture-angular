@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -14,6 +15,7 @@ import {
   selector: 'voicecapture',
   standalone: true,
   templateUrl: './voicecapture-angular.component.html',
+  imports: [CommonModule],
   styleUrls: [
     './voicecapture-angular.component.scss',
     './voicecapture-angular.variables.scss',
@@ -22,6 +24,7 @@ import {
 export class VoiceCapture implements OnInit {
   @Input() start: WritableSignal<boolean> = signal(false);
   @Input() lang: string = 'en-US';
+  @Input() mode: string = 'fullscreen';
   @Output() voiceTranscript = new EventEmitter<string>();
 
   finalTranscript: string = '';

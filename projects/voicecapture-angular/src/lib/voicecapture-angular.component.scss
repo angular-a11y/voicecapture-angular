@@ -18,13 +18,9 @@
   font-size: 14px;
   height: auto;
   justify-content: center;
-  left: 0;
   opacity: 0;
   padding: 35px;
   pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
   transition: 0.5s all;
   user-select: none;
   z-index: 99;
@@ -38,6 +34,26 @@
     }
     .btn-voice {
       transform: scale(1);
+    }
+  }
+  &.fullscreen {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+  &.float {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    border-radius: 100px;
+    justify-content: flex-end;
+    .exit {
+      display: none;
+    }
+    .btn-voice {
+      --mic-volume-size: 80px;
     }
   }
   p {

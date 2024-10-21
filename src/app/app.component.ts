@@ -30,6 +30,7 @@ export class AppComponent {
   isVoiceCaptureExample: WritableSignal<boolean> = signal(false);
   voiceTextTranscript!: string;
   langSelect = 'en-US';
+  modeSelect = 'fullscreen';
 
   openModal(): void {
     this.isModalActive = true;
@@ -41,7 +42,8 @@ export class AppComponent {
     this.renderer.removeClass(document.body, 'modal-active');
   }
 
-  openVoiceCapture() {
+  openVoiceCapture(mode: string) {
+    this.modeSelect = mode;
     this.isVoiceCaptureExample.set(true);
   }
 

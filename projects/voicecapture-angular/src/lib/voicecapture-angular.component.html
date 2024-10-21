@@ -1,4 +1,9 @@
-<section class="voicecapture" [class.active]="start()" (click)="deactivateVoice()">
+<section
+  class="voicecapture"
+  [class.active]="start()"
+  (click)="deactivateVoice()"
+  [ngClass]="mode"
+>
   <button class="exit" type="button" (click)="deactivateVoice()">
     <i class="icon icon-exit">X</i>
   </button>

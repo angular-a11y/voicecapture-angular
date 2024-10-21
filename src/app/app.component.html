@@ -32,9 +32,16 @@
         <button
           class="button-voicecapture-example"
           type="button"
-          (click)="openVoiceCapture()"
+          (click)="openVoiceCapture('fullscreen')"
         >
-          <span class="material-symbols-outlined"> &#xe029; </span> VoiceCapture
+          <span class="material-symbols-outlined"> &#xe029; </span> FullScreen
+        </button>
+        <button
+          class="button-voicecapture-example"
+          type="button"
+          (click)="openVoiceCapture('float')"
+        >
+          <span class="material-symbols-outlined"> &#xe029; </span> Float
         </button>
         <div class="language">
           <label for="langSelect" class="lang-label">Choose the language:</label>
@@ -55,12 +62,13 @@
           </select>
         </div>
       </div>
+
       <voicecapture
         [start]="isVoiceCaptureExample"
         (voiceTranscript)="returnVoiceTranscript($event)"
         [lang]="langSelect"
+        [mode]="modeSelect"
       />
-
     </div>
     @if(voiceTextTranscript) {
       <div class="content">
