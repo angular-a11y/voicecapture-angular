@@ -30,6 +30,7 @@ import { VoiceCapture } from 'voicecapture-angular';
 
 @Component({
   selector: 'app-voicecapture-example',
+  imports: [VoiceCapture],
   template: \`
   <button (click)="openVoiceCapture()">
     Open VoiceCapture Example
