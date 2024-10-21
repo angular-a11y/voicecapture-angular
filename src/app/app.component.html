@@ -27,17 +27,17 @@
       </div>
     </div>
     <div class="content">
-      <h2>VoiceWave Example</h2>
+      <h2>VoiceCapture Example</h2>
       <button
-        class="button-voicewave-example"
+        class="button-voicecapture-example"
         type="button"
-        (click)="openVoiceWave()"
+        (click)="openVoiceCapture()"
       >
-        <span class="material-symbols-outlined"> &#xe029; </span> VoiceWave
+        <span class="material-symbols-outlined"> &#xe029; </span> VoiceCapture
       </button>
 
-      <voicewave
-        [start]="isVoiceWaveExample"
+      <voicecapture
+        [start]="isVoiceCaptureExample"
         (voiceTranscript)="returnVoiceTranscript($event)"
       />
     </div>

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VoiceWave } from './voicecapture-angular.component';
+import { VoiceCapture } from './voicecapture-angular.component';
 
-describe('VoiceWave', () => {
-  let component: VoiceWave;
-  let fixture: ComponentFixture<VoiceWave>;
+describe('VoiceCapture', () => {
+  let component: VoiceCapture;
+  let fixture: ComponentFixture<VoiceCapture>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VoiceWave],
+      imports: [VoiceCapture],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VoiceWave);
+    fixture = TestBed.createComponent(VoiceCapture);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'voicewave',
+  selector: 'voicecapture',
   standalone: true,
   templateUrl: './voicecapture-angular.component.html',
   styleUrls: [
@@ -19,7 +19,7 @@ import {
     './voicecapture-angular.variables.scss',
   ],
 })
-export class VoiceWave implements OnInit {
+export class VoiceCapture implements OnInit {
   @Input() start: WritableSignal<boolean> = signal(false);
   @Output() voiceTranscript = new EventEmitter<string>();
 
@@ -91,7 +91,7 @@ export class VoiceWave implements OnInit {
       if (!this.ignoreOnEnd && this.finalTranscript) {
         this.updateText('');
         document
-          .querySelector('.voicewave .exit')
+          .querySelector('.voicecapture .exit')
           ?.dispatchEvent(new Event('click'));
       }
     };
@@ -142,7 +142,7 @@ export class VoiceWave implements OnInit {
   }
 
   private updateText(text: string): void {
-    const textElement = document.querySelector('.voicewave p');
+    const textElement = document.querySelector('.voicecapture p');
     if (textElement) {
       textElement.textContent = text;
     }

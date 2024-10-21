@@ -5,7 +5,7 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 import { ModalinstallComponent } from './components/modal-install/modal-install.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import { FormsModule } from '@angular/forms';
-import { VoiceWave } from '../../projects/voicecapture-angular/src/public-api';
+import { VoiceCapture } from '../../projects/voicecapture-angular/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ import { VoiceWave } from '../../projects/voicecapture-angular/src/public-api';
     ModalinstallComponent,
     DarkmodeComponent,
     AppFooterComponent,
-    VoiceWave,
+    VoiceCapture,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -27,7 +27,7 @@ export class AppComponent {
 
   codeString: string = 'npm install voicecapture-angular';
   isModalActive: boolean = false;
-  isVoiceWaveExample: WritableSignal<boolean> = signal(false);
+  isVoiceCaptureExample: WritableSignal<boolean> = signal(false);
   voiceTextTranscript!: string;
 
   openModal(): void {
@@ -40,8 +40,8 @@ export class AppComponent {
     this.renderer.removeClass(document.body, 'modal-active');
   }
 
-  openVoiceWave() {
-    this.isVoiceWaveExample.set(true);
+  openVoiceCapture() {
+    this.isVoiceCaptureExample.set(true);
   }
 
   returnVoiceTranscript(transcript: string) {

@@ -26,17 +26,17 @@ export class ModalinstallComponent {
   codeExample: string = `// Example Component
 import { Component } from '@angular/core';
 import { signal, WritableSignal } from 'signals';
-import { VoiceWave } from 'voicecapture-angular';
+import { VoiceCapture } from 'voicecapture-angular';
 
 @Component({
-  selector: 'app-voicewave-example',
+  selector: 'app-voicecapture-example',
   template: \`
-  <button (click)="openVoiceWave()">
-    Open VoiceWave Example
+  <button (click)="openVoiceCapture()">
+    Open VoiceCapture Example
   </button>
 
   <voicecapture-angular
-    [start]="isVoiceWaveExample"
+    [start]="isVoiceCaptureExample"
     (voiceTranscript)="returnVoiceTranscript($event)"
   />
 
@@ -46,12 +46,12 @@ import { VoiceWave } from 'voicecapture-angular';
   }
 \`,
 })
-export class VoiceWaveExampleComponent {
-  isVoiceWaveExample: WritableSignal<boolean> = signal(false);
+export class VoiceCaptureExampleComponent {
+  isVoiceCaptureExample: WritableSignal<boolean> = signal(false);
   voiceTextTranscript!: string;
 
-  openVoiceWave() {
-    this.isVoiceWaveExample.set(true);
+  openVoiceCapture() {
+    this.isVoiceCaptureExample.set(true);
   }
 
   returnVoiceTranscript(transcript: string) {
