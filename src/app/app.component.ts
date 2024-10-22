@@ -32,7 +32,7 @@ export class AppComponent {
     this.angularVersion = pkg.dependencies?.['@angular/core'].replace('^', '');
     this.configNucleus = {
       name: 'voicecapture-angular',
-      github: 'https://github.com/livre-saber/voicecapture-angular',
+      github: 'https://github.com/angular-a11y/voicecapture-angular',
       npm: 'https://www.npmjs.com/package/voicecapture-angular',
       appVersion: this.appVersion,
       angularVersion: this.angularVersion,
