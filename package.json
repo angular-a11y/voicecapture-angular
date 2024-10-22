@@ -41,7 +41,7 @@
     "@angular/platform-browser-dynamic": "^18.2.8",
     "@angular/router": "^18.2.8",
     "jsonminify": "^0.4.2",
-    "nucleus-angular": "^0.0.5",
+    "nucleus-angular": "^0.0.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.8.0",
     "zone.js": "~0.14.10"
