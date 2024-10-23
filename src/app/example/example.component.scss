@@ -7,6 +7,34 @@
   }
 }
 
+.button-voicecapture-example {
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--vtl-background);
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  min-height: 70px;
+  white-space: nowrap;
+
+  svg {
+    margin-right: 1rem;
+  }
+
+  .material-symbols-outlined {
+    margin-right: 0.5rem;
+  }
+  .material-symbols-outlined.plus {
+    margin: 0 0.5rem;
+  }
+}
+
 .lang-label {
   display: block;
   margin-bottom: 10px;
