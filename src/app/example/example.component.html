@@ -1,20 +1,24 @@
 <div class="content">
   <h2>VoiceCapture Example</h2>
   <div class="content-actions">
-    <button
-      class="button-voicecapture-example"
-      type="button"
-      (click)="openVoiceCapture('fullscreen')"
-    >
-      <span class="material-symbols-outlined"> &#xe029; </span> FullScreen
-    </button>
-    <button
-      class="button-voicecapture-example"
-      type="button"
-      (click)="openVoiceCapture('float')"
-    >
-      <span class="material-symbols-outlined"> &#xe029; </span> Float
-    </button>
+    <div class="example-actions">
+      <button
+        class="button-voicecapture-example"
+        type="button"
+        (click)="openVoiceCapture('fullscreen')"
+      >
+        <span class="material-symbols-outlined"> &#xe029; </span>
+        <span class="material-symbols-outlined"> &#xe5d0; </span> FullScreen
+      </button>
+      <button
+        class="button-voicecapture-example"
+        type="button"
+        (click)="openVoiceCapture('float')"
+      >
+        <span class="material-symbols-outlined"> &#xe029; </span>
+        <span class="material-symbols-outlined"> &#xe62e; </span> Float
+      </button>
+    </div>
     <div class="language">
       <label for="langSelect" class="lang-label"
         >Choose the language:</label
