@@ -31,9 +31,6 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
             "scripts": []
           },
           "configurations": {
@@ -89,9 +86,6 @@
                 "glob": "**/*",
                 "input": "public"
               }
-            ],
-            "styles": [
-              "src/styles.scss"
             ],
             "scripts": [],
             "karmaConfig": "karma.conf.js"
