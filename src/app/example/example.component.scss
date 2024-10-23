@@ -10,16 +10,13 @@
 .button-voicecapture-example {
   background: var(--primary);
   color: #fff;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   border: 1px solid var(--vtl-background);
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
   padding: 0.5rem 1rem;
+  cursor: pointer;
   min-height: 70px;
   white-space: nowrap;
 
