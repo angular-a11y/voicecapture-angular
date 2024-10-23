@@ -1,3 +1,12 @@
+.example-actions {
+  width: 50%;
+  display: flex;
+  gap: 20px;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+}
+
 .lang-label {
   display: block;
   margin-bottom: 10px;
