@@ -30,6 +30,7 @@ export class VoiceCapture implements OnInit {
 
   finalTranscript: string = '';
   recognizing: boolean = false;
+  errorOccurred: boolean = false;
   recognition: any = null;
   animationButton: boolean = false;
   translations: { [key: string]: { [key: string]: string } } = translates;
@@ -84,6 +85,7 @@ export class VoiceCapture implements OnInit {
 
     this.recognition.onstart = () => {
       this.recognizing = true;
+      this.errorOccurred = false;
       this.updateText('speakNow');
       this.animationButton = true;
       this.cdr.markForCheck();
@@ -92,6 +94,7 @@ export class VoiceCapture implements OnInit {
     this.recognition.onerror = (event: any) => {
       console.error('Recognition error (onerror event):', event.error);
       this.animationButton = false;
+      this.errorOccurred = true;
       this.handleError(event.error);
       this.cdr.markForCheck();
     };
@@ -102,7 +105,7 @@ export class VoiceCapture implements OnInit {
       if (this.finalTranscript) {
         this.updateText('');
         this.voiceTranscript.emit(this.finalTranscript);
-      } else {
+      } else if (!this.errorOccurred) {
         console.warn('Recognition stopped without result.');
         this.updateText('noSpeech');
 

@@ -26,6 +26,7 @@ export class VoiceCaptureLegacy implements OnInit {
   @Output() voiceTranscript = new EventEmitter<string>();
 
   finalTranscript: string = '';
+  errorOccurred: boolean = false;
   recognizing: boolean = false;
   recognition: any = null;
   animationButton: boolean = false;
@@ -81,6 +82,7 @@ export class VoiceCaptureLegacy implements OnInit {
 
     this.recognition.onstart = () => {
       this.recognizing = true;
+      this.errorOccurred = false;
       this.updateText('speakNow');
       this.animationButton = true;
       this.cdr.markForCheck();
@@ -89,6 +91,7 @@ export class VoiceCaptureLegacy implements OnInit {
     this.recognition.onerror = (event: any) => {
       console.error('Recognition error (onerror event):', event.error);
       this.animationButton = false;
+      this.errorOccurred = true;
       this.handleError(event.error);
       this.cdr.markForCheck();
     };
@@ -99,7 +102,7 @@ export class VoiceCaptureLegacy implements OnInit {
       if (this.finalTranscript) {
         this.updateText('');
         this.voiceTranscript.emit(this.finalTranscript);
-      } else {
+      } else if (!this.errorOccurred) {
         console.warn('Recognition stopped without result.');
         this.updateText('noSpeech');
 
