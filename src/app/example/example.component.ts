@@ -1,11 +1,12 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { VoiceCapture } from '../../../projects/voicecapture-angular/src/public-api';
 import { FormsModule } from '@angular/forms';
+import { NucleusBox } from 'nucleus-angular';
 
 @Component({
   selector: 'example-voicecapture',
   standalone: true,
-  imports: [VoiceCapture, FormsModule],
+  imports: [VoiceCapture, FormsModule, NucleusBox],
   templateUrl: './example.component.html',
   styleUrl: './example.component.scss',
 })
