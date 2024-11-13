@@ -3,11 +3,14 @@
   [class.active]="start()"
   (click)="deactivateVoice()"
   [ngClass]="mode"
+  aria-modal="true"
+  role="dialog"
+  [attr.aria-expanded]="start() ? 'true' : 'false'"
 >
   <button
     class="exit"
     (click)="deactivateVoice()"
-    aria-label="Close voice capture"
+    [attr.aria-label]="getTranslation('close')"
     type="button"
   >
     <i class="icon icon-exit" aria-hidden="true">X</i>
@@ -16,7 +19,7 @@
   <button
     class="btn-voice"
     [class.active]="animationButton"
-    aria-label="Start voice capture"
+    [attr.aria-label]="getTranslation('open')"
     type="button"
   >
     <svg
