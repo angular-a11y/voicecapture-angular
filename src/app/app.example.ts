@@ -13,6 +13,7 @@ import { VoiceCapture } from 'voicecapture-angular';
 
   <voicecapture-angular
     [start]="isVoiceState"
+    [clipboard]="true"
     (voiceTranscript)="voiceTranscript($event)"
   />
 

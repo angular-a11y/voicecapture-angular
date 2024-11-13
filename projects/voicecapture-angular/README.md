@@ -44,6 +44,7 @@ export class VoiceCaptureExampleComponent {
 
 <voicecapture-angular
   [start]="isVoiceCaptureExample"
+  [clipboard]="true"
   (voiceTranscript)="returnVoiceTranscript($event)"
 />
 
@@ -58,7 +59,6 @@ export class VoiceCaptureExampleComponent {
     placeholder="Texto do Voice Transcript"
   />
 
-  <label for="voiceTextArea" >Textarea Example:</label>
   <textarea
     id="voiceTextArea"
     [(ngModel)]="voiceTextTranscript"
@@ -73,44 +73,32 @@ export class VoiceCaptureExampleComponent {
 
 ## Component Setup
 
-In the `VoiceCaptureExampleComponent`, a `WritableSignal<boolean>` named `isVoiceCaptureExample` is defined, initialized to `false`. The `openVoiceCapture` method sets `isVoiceCaptureExample` to `true`, which triggers the voice capture process.
+In the `VoiceCaptureExampleComponent`, a `WritableSignal<boolean>` named `isVoiceCaptureExample` is defined and initialized to `false`. The `openVoiceCapture` method sets `isVoiceCaptureExample` to `true`, triggering the voice capture process. The `enableClipboard` property is used to enable clipboard integration.
 
 ## Inputs
 
-### @Input() start: WritableSignal<boolean>
+| Input       | Type                  | Default     | Description                                                                                  |
+|-------------|-----------------------|-------------|----------------------------------------------------------------------------------------------|
+| `start`     | `WritableSignal<boolean>` | `false`     | Controls the initiation of voice capture.                                                    |
+| `lang`      | `string`              | `"en"`      | Specifies the language for speech recognition (e.g., `"pt"` for Portuguese).                |
+| `mode`      | `string`              | `"fullscreen"` | Defines the display mode: `"float"` for inline, `"fullscreen"` for full-screen.              |
+| `clipboard` | `boolean`             | `false`     | Enables copying the final transcript text to the clipboard automatically.                    |
 
-Controls the initiation of voice capture.
-
-### @Input() lang: string = 'en'
-
-Language of voice capture, this default is en.
-
-### @Input() mode: string = 'fullscreen'
-
-Mode of voice capture, this default is `fullscreen` other value `float`.
-
-**Example**: Start capturing voice input.
+### Example with Clipboard:
 
 ```html
-<voicecapture-angular [start]="isVoiceCaptureExample" />
+<voicecapture-angular [start]="isVoiceCaptureExample" [clipboard]="true" />
 ```
 
-### Outputs
+## Outputs
 
-### (voiceTranscript)
-
-An event that emits the transcribed voice input. 
-
-**Example**: Capture and use the transcribed text.
-
-```typescript
-returnVoiceTranscript(transcript: string) {
-  this.voiceTextTranscript = transcript;
-}
-```
+| Output              | Payload     | Description                                                                                     |
+|---------------------|-------------|-------------------------------------------------------------------------------------------------|
+| `voiceTranscript`   | `string`    | Emitted with the transcribed voice input.                                                       |
 
 ## Features
 
 - **Real-time Voice Transcription**: Instantly capture and display voice input as text.
 - **Editable Transcripts**: Users can modify the transcribed text through input fields or text areas.
+- **Clipboard Integration**: Automatically copies the final transcript to the clipboard, streamlining user workflows.
 - **Customizable Events**: Easily handle transcription results with customizable output events.
