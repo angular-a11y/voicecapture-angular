@@ -173,7 +173,7 @@ export class VoiceCaptureLegacy implements OnInit {
     }
   }
 
-  private getTranslation(key: string): string {
+  public getTranslation(key: string): string {
     const translationsForLang =
       this.translations[this.lang] || this.translations['en-US'];
     return translationsForLang[key] || key;
