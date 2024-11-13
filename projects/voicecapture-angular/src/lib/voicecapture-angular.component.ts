@@ -26,6 +26,7 @@ export class VoiceCapture implements OnInit {
   @Input() start: WritableSignal<boolean> = signal(false);
   @Input() lang: string = 'en';
   @Input() mode: string = 'fullscreen';
+  @Input() clipboard: boolean = false;
   @Output() voiceTranscript = new EventEmitter<string>();
 
   finalTranscript: string = '';
@@ -164,6 +165,16 @@ export class VoiceCapture implements OnInit {
     this.updateText(interimTranscript || this.finalTranscript);
 
     if (this.finalTranscript) {
+      if (this.clipboard) {
+        navigator.clipboard.writeText(this.finalTranscript).then(
+          () => {
+            console.log('Text copied to clipboard');
+          },
+          (err) => {
+            console.error('Could not copy text to clipboard', err);
+          }
+        );
+      }
       this.voiceTranscript.emit(this.finalTranscript);
       this.deactivateVoice();
     }
