@@ -6,14 +6,13 @@ import pkg from '../../package.json';
 import pkgNPM from '../../projects/voicecapture-angular/package.json';
 import { ExampleComponent } from './app.example';
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    NucleusAngularApp,
-    VoiceCaptureExample,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [
+        NucleusAngularApp,
+        VoiceCaptureExample,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   public appVersion;

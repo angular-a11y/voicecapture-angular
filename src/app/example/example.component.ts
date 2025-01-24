@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { NucleusBox } from 'nucleus-angular';
 
 @Component({
-  selector: 'example-voicecapture',
-  standalone: true,
-  imports: [VoiceCapture, FormsModule, NucleusBox],
-  templateUrl: './example.component.html',
-  styleUrl: './example.component.scss',
+    selector: 'example-voicecapture',
+    imports: [VoiceCapture, FormsModule, NucleusBox],
+    templateUrl: './example.component.html',
+    styleUrl: './example.component.scss'
 })
 export class VoiceCaptureExample {
   isVoiceCaptureExample: WritableSignal<boolean> = signal(false);
