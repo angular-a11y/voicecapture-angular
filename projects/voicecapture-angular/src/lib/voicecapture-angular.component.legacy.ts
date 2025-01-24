@@ -12,12 +12,13 @@ import {
 import { translates } from './voicecapture-angular.translate';
 
 @Component({
-  selector: 'voicecapture',
-  templateUrl: './voicecapture-angular.component.html',
-  styleUrls: [
-    './voicecapture-angular.component.scss',
-    './voicecapture-angular.variables.scss',
-  ],
+    selector: 'voicecapture',
+    templateUrl: './voicecapture-angular.component.html',
+    styleUrls: [
+        './voicecapture-angular.component.scss',
+        './voicecapture-angular.variables.scss',
+    ],
+    standalone: false
 })
 export class VoiceCaptureLegacy implements OnInit {
   @Input() start: WritableSignal<boolean> = signal(false);
