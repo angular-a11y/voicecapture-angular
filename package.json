@@ -1,6 +1,6 @@
 {
   "name": "voicecapture-angular-spa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "lucasferreiralimax (https://github.com/lucasferreiralimax)",
   "repository": "https://github.com/angular-a11y/voicecapture-angular",
   "bugs": {
@@ -32,14 +32,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^19.1.4",
-    "@angular/common": "^19.1.4",
-    "@angular/compiler": "^19.1.4",
-    "@angular/core": "^19.1.4",
-    "@angular/forms": "^19.1.4",
-    "@angular/platform-browser": "^19.1.4",
-    "@angular/platform-browser-dynamic": "^19.1.4",
-    "@angular/router": "^19.1.4",
+    "@angular/animations": "^20.0.3",
+    "@angular/common": "^20.0.3",
+    "@angular/compiler": "^20.0.3",
+    "@angular/core": "^20.0.3",
+    "@angular/forms": "^20.0.3",
+    "@angular/platform-browser": "^20.0.3",
+    "@angular/platform-browser-dynamic": "^20.0.3",
+    "@angular/router": "^20.0.3",
     "jsonminify": "^0.4.2",
     "nucleus-angular": "^1.0.3",
     "rxjs": "~7.8.0",
@@ -47,9 +47,9 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.5",
-    "@angular/cli": "^19.1.5",
-    "@angular/compiler-cli": "^19.1.4",
+    "@angular/build": "^20.0.2",
+    "@angular/cli": "^20.0.2",
+    "@angular/compiler-cli": "^20.0.3",
     "@types/jasmine": "~5.1.0",
     "glob": "^11.0.0",
     "jasmine-core": "^5.2.0",
@@ -58,8 +58,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "ng-packagr": "^19.1.0",
+    "ng-packagr": "^20.0.0",
     "terser": "^5.36.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.8.3"
   }
 }
