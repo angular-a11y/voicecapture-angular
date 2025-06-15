@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '22.x'
       - name: Install dependencies and build
-        run: npm ci && npm run build
+        run: npm ci --legacy-peer-deps && npm run build
       - name: Run unit tests
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
       - name: Run module tests
