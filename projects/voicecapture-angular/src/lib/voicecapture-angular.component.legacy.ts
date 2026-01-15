@@ -41,8 +41,7 @@ export class VoiceCaptureLegacy implements OnInit {
         } else {
           this.deactivateVoice();
         }
-      },
-      { allowSignalWrites: true }
+      }
     );
   }
 
