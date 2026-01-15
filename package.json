@@ -2,7 +2,10 @@
   "name": "voicecapture-angular-spa",
   "version": "1.0.2",
   "author": "lucasferreiralimax (https://github.com/lucasferreiralimax)",
-  "repository": "https://github.com/angular-a11y/voicecapture-angular",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular-a11y/voicecapture-angular.git"
+  },
   "bugs": {
     "url": "https://github.com/angular-a11y/voicecapture-angular/issues"
   },
