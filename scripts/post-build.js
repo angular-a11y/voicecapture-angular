@@ -3,6 +3,7 @@ const path = require('path');
 const terser = require('terser');
 const glob = require('glob');
 const jsonminify = require('jsonminify');
+const { execSync } = require('child_process');
 
 // Diretório de saída da build
 const outputDir = 'dist/voicecapture-angular';
@@ -38,6 +39,18 @@ async function minifyFile(filePath) {
 function minifyPackageJson() {
   try {
     const packageJsonPath = path.join(outputDir, 'package.json');
+
+    // Check if package.json exists before attempting to read
+    if (!fs.existsSync(packageJsonPath)) {
+      console.log(`package.json not found at ${packageJsonPath}. Running 'npm run build:module'...`);
+      try {
+        execSync('npm run build:module', { stdio: 'inherit' });
+      } catch (error) {
+        console.error('Error running npm run build:module:', error.message);
+      }
+      return;
+    }
+
     const content = fs.readFileSync(packageJsonPath, 'utf8');
 
     // Minifica o JSON
