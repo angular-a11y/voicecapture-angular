@@ -43,8 +43,7 @@ export class VoiceCapture implements OnInit {
         } else {
           this.deactivateVoice();
         }
-      },
-      { allowSignalWrites: true }
+      }
     );
   }
 
